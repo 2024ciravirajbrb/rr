@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyNDpqgZ8Kio0HdQ44ns7AuS",
+      "authorship_tag": "ABX9TyP+oVgWGY1OMKge6xGVXQ91",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -28,7 +28,7 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 10,
+      "execution_count": null,
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -88,7 +88,7 @@
         "collapsed": true,
         "id": "aJ9YnSxdtTiZ"
       },
-      "execution_count": 17,
+      "execution_count": null,
       "outputs": []
     },
     {
@@ -111,10 +111,11 @@
           "base_uri": "https://localhost:8080/",
           "height": 927
         },
+        "collapsed": true,
         "id": "8pcbhUjovoWy",
         "outputId": "dd5d5162-feca-4821-f314-f17db8a0698f"
       },
-      "execution_count": 19,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "display_data",
@@ -141,6 +142,18 @@
     {
       "cell_type": "code",
       "source": [
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')"
+      ],
+      "metadata": {
+        "id": "OnHu4eMu2yQI"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
         "data[\"PerormanceScore\"]= (0.4*data[\"Marks\"])+(0.3*data[\"Attendance\"])+(0.3*data[\"Age\"])\n",
         "data"
       ],
@@ -152,7 +165,7 @@
         "id": "nKHAQlEBwukw",
         "outputId": "2bd0da14-bd32-44f2-954f-9bc2bf091de0"
       },
-      "execution_count": 20,
+      "execution_count": null,
       "outputs": [
         {
           "output_type": "execute_result",
@@ -474,20 +487,80 @@
       "metadata": {
         "id": "_Oe2fdqzy5cr"
       },
-      "execution_count": 31,
+      "execution_count": null,
       "outputs": []
     },
     {
       "cell_type": "code",
       "source": [
-        "X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42)\n",
-        ""
+        "X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42)\n"
       ],
       "metadata": {
         "id": "wrKf2_060nbL"
       },
-      "execution_count": 32,
+      "execution_count": null,
       "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "model=DecisionTreeClassifier()\n",
+        "model.fit(X_train,y_train)\n",
+        "y_pred=model.predict(X_test)"
+      ],
+      "metadata": {
+        "id": "J0dgRsGE3qRq"
+      },
+      "execution_count": 35,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "y_pred=model.predict(X_test)\n",
+        "print(y_pred)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-BgoQ0U04N9y",
+        "outputId": "ed17b899-90a8-46b1-bddf-edf8ed65b85b"
+      },
+      "execution_count": 37,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Pass' 'Pass']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "accuracy=accuracy_score(y_test,y_pred)\n",
+        "print(\"Accuracy:\", accuracy)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "5Hpq-REF4m9S",
+        "outputId": "538a4bb7-b724-4151-f804-782174f09579"
+      },
+      "execution_count": 39,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Accuracy: 1.0\n"
+          ]
+        }
+      ]
     }
   ]
 }
